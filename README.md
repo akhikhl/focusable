@@ -4,6 +4,8 @@
 
 "focusable" is a small javascript function, implementing "focusable" behavior that can be attached to any DOM-element.
 
+See [live example here](http://akhikhl.blogspot.de/2013/05/test-focusable-script.html).
+
 ##API
 
 "focusable" behavior is attached to a DOM element via "focusable" class:
