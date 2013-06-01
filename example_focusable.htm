@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>Example of focusable behavior</title>
+    <style>
+      #example, #example input, #example td {
+        font-face: Verdana, Arial, sans-serif;
+        font-size: 10pt;
+      }
+    
+      .testDiv {
+        border: 1px solid black;
+        float: left;
+        height: 150px;
+        margin: 8px 8px 8px 0;
+        padding: 8px;
+        width: 200px;
+      }
+
+      .testDiv.focused {
+        background-color: PaleTurquoise;
+      }
+      
+      #beforeLog {
+        clear: both;
+        margin-bottom: 8px; 
+      }
+      
+      #btnClearLog {
+        margin-left: 16px;
+      }
+
+      #log {
+        border: 1px solid Gainsboro;
+        height: 100px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="example">
+      <div>Example of "focusable" behavior. Three divs have "focusable" class
+      and can get "focused" class from mouse clicks or from keyboard navigation to nested elements.</div>
+      <div id="div1" class="testDiv focusable">
+        <div class="title">div1</div>
+        <input type="text"/>
+        <input type="text"/>
+        <input type="text"/>
+        <input type="button" value="button"/>
+      </div>
+      <div id="div2" class="testDiv focusable">
+        <div class="title">div2</div>
+        <input type="text"/>
+        <input type="text"/>
+        <input type="text"/>
+        <input type="button" value="button"/>
+      </div>
+      <div id="div3" class="testDiv focusable">
+        <div class="title">div3</div>
+      </div>
+      <div id="beforeLog">Log:<input type="button" id="btnClearLog" value="Clear"></input></div>
+      <div id="log"></div>
+    </div>
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://dl.dropboxusercontent.com/u/15089387/js/focusable/focusable.js"></script>
+  <script type="text/javascript">
+    jQuery(function($) {
+      // append event display to #log
+      $(".testDiv").on("gotFocus.focusable lostFocus.focusable", function(event) {
+        $(document.createElement("span")).html(event.type + " " + $(event.target).attr("id") + "<br>").appendTo("#log").get(0).scrollIntoView(false);
+      });
+      // clear log
+      $("#btnClearLog").on("click", function() {
+        $("#log").empty();
+      });      
+    });
+  </script>
+</html>
